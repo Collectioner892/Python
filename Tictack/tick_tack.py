@@ -4,7 +4,42 @@ O_CELL = "O"
 
 
 def is_defined_winner(array):
-    # TODO: need to check for winner.
+    # TODO: need to check for drawn.
+    # ['-', '-', '-', | - array[0],array[1], array[2]
+    #  'X', 'X', 'X',
+    #  '-', '-', '-']
+    if array[0] == X_CELL and array[1] == X_CELL and array[2] == X_CELL:
+        return True
+    if array[3] == X_CELL and array[4] == X_CELL and array[5] == X_CELL:
+        return True
+    if array[6] == X_CELL and array[7] == X_CELL and array[8] == X_CELL:
+        return True
+    if array[0] == X_CELL and array[3] == X_CELL and array[6] == X_CELL:
+        return True
+    if array[1] == X_CELL and array[4] == X_CELL and array[7] == X_CELL:
+        return True
+    if array[2] == X_CELL and array[5] == X_CELL and array[8] == X_CELL:
+        return True
+    if array[0] == X_CELL and array[4] == X_CELL and array[8] == X_CELL:
+        return True
+    if array[2] == X_CELL and array[4] == X_CELL and array[6] == X_CELL:
+        return True
+    if array[0] == O_CELL and array[1] == O_CELL and array[2] == O_CELL:
+        return True
+    if array[3] == O_CELL and array[4] == O_CELL and array[5] == O_CELL:
+        return True
+    if array[6] == O_CELL and array[7] == O_CELL and array[8] == O_CELL:
+        return True
+    if array[0] == O_CELL and array[3] == O_CELL and array[6] == O_CELL:
+        return True
+    if array[1] == O_CELL and array[4] == O_CELL and array[7] == O_CELL:
+        return True
+    if array[2] == O_CELL and array[5] == O_CELL and array[8] == O_CELL:
+        return True
+    if array[0] == O_CELL and array[4] == O_CELL and array[8] == O_CELL:
+        return True
+    if array[2] == O_CELL and array[4] == O_CELL and array[6] == O_CELL:
+        return True
     return False
 
 
@@ -85,3 +120,5 @@ if __name__ == "__main__":
         if is_defined_winner(playing_field):
             print(f"Player-2, you are winner!")
             break
+
+
