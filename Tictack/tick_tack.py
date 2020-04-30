@@ -105,6 +105,15 @@ def player_step(player_name, cells_array, cell_name):
     draw(cells_array)
 
 
+def is_nobody_win(playing_field):
+    flag_empty_field_exists = True
+    for cell in playing_field:
+        if cell == EMPTY_CELL:
+            flag_empty_field_exists = False
+            break
+    return flag_empty_field_exists
+
+
 if __name__ == "__main__":
     print(f"please input number from [1--9]; Player-1 - '{X_CELL}'; Player-2 - '{O_CELL}';")
     print("Player-1 - you start game:")
@@ -115,10 +124,14 @@ if __name__ == "__main__":
         if is_defined_winner(playing_field):
             print(f"Player-1, you are winner!")
             break
+        if is_nobody_win(playing_field):
+            print("nobody won in this game")
+            break
 
         player_step("Player-2", playing_field, O_CELL)
         if is_defined_winner(playing_field):
             print(f"Player-2, you are winner!")
             break
-
-
+        if is_nobody_win(playing_field):
+            print("nobody won in this game")
+            break
