@@ -113,7 +113,6 @@ def is_nobody_win(playing_field):
             break
     return flag_empty_field_exists
 
-
 if __name__ == "__main__":
     print(f"please input number from [1--9]; Player-1 - '{X_CELL}'; Player-2 - '{O_CELL}';")
     print("Player-1 - you start game:")
