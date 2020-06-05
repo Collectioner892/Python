@@ -1,7 +1,8 @@
 from django.http import response
+from django.shortcuts import render
 
 
 # Create your views here.
 
 def home(request):
-    return response.HttpResponse(f"<html><head></head><body><span>request:</span></br>{request}</body></html>")
+    return render(request=request, template_name="master_page.htm")
