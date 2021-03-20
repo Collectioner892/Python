@@ -55,7 +55,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "Ticktak", "templates"),
+            os.path.join(BASE_DIR, "ticktak", "templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
