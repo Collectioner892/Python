@@ -1,0 +1,27 @@
+.tick {
+    color: #080;
+    background: rgba(0, 128, 0, 0.1);
+    border-radius: 10px;
+    transition: 0.5s 0.5s;
+    -webkit-transition: 0.5s 0.5s;
+
+    width: 100px;
+    height: 100px;
+    font: 600 70px/100px 'Open Sans', arial, sans-serif;
+    text-align: center;
+    margin:3px;
+}
+
+.tack {
+    color: #c00;
+    background: rgba(200,0,0,0.1);
+    border-radius: 10px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+
+    width: 100px;
+    height: 100px;
+    font: 600 70px/100px 'Open Sans', arial, sans-serif;
+    text-align: center;
+    margin:3px;
+}
