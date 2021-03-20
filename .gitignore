@@ -1,2 +1,5 @@
 /Games/venv/
 /Games/.idea/
+.idea/
+Games/games/__pycache__/
+Games/ticktak/__pycache__/
