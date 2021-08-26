@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Ticktak import views
+from ticktak import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
