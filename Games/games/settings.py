@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "ticktak", "templates"),
+            os.path.join(BASE_DIR, "Games", "ticktak", "templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'games.wsgi.application'
+WSGI_APPLICATION = 'Games.games.wsgi.application'
 
 
 # Database
