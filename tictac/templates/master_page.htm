@@ -1,26 +1,27 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Tic-Tak - the best game of the world</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'ticktak/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'tictac/css/main.css' %}"/>
 </head>
 <body>
 
-<div class="container mt-4">
+<div class="container mt-4" id="game-frame">
+    {% csrf_token %}
     <div class="row d-flex justify-content-center">
         <div class="bg-light border col-4 shadow rounded mb-3">
             <div class="row d-flex justify-content-center">
-                <div class="col-3 tack">
-                    <a target="_blank" href="tac_control.htm">
-                        <span class="">O</span>
-                    </a>
+                <div class="col-3 tack" onclick="s();">
+                    <span class="" value="0">O</span>
                 </div>
                 <div class="col-3 tick">
                     <span>X</span>
@@ -55,4 +56,26 @@
     </div>
 </div>
 </body>
+
+
+{% block javascript %}
+<script>
+
+function s(){
+    serializedData = {"expamle": "data"}
+    $.ajax({
+        type: 'POST',
+        url: '{% url "post/cell-action" %}',
+        data: serializedData,
+        success: function (response) {
+            console.log(response)
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+}
+</script>
+{% endblock javascript %}
+
 </html>

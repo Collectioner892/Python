@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ticktak import views
+from tictac import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("ticktak/", views.home)
+    path("tic-tac/", views.home),
+    path("post/cell-action", views.getCellResponse, name='post/cell-action')
 
 ]
