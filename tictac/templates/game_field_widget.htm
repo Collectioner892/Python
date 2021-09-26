@@ -27,12 +27,12 @@
                 </div>
             {% endif %}
             {% if cell_value == "x" %}
-                <div class="col-3 tick" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                <div class="col-3 tick" onclick="s({{ forloop.counter0|add:"3" }});" style="cursor:pointer">
                     <span>{{ cell_value }}</span>
                 </div>
             {% endif %}
             {% if cell_value == "o" %}
-                <div class="col-3 tack" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                <div class="col-3 tack" onclick="s({{ forloop.counter0|add:"3" }});" style="cursor:pointer">
                     <span>{{ cell_value }}</span>
                 </div>
             {% endif %}
@@ -47,12 +47,12 @@
                 </div>
             {% endif %}
             {% if cell_value == "x" %}
-                <div class="col-3 tick" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                <div class="col-3 tick" onclick="s({{ forloop.counter0|add:"6" }});" style="cursor:pointer">
                     <span>{{ cell_value }}</span>
                 </div>
             {% endif %}
             {% if cell_value == "o" %}
-                <div class="col-3 tack" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                <div class="col-3 tack" onclick="s({{ forloop.counter0|add:"6" }});" style="cursor:pointer">
                     <span>{{ cell_value }}</span>
                 </div>
             {% endif %}
