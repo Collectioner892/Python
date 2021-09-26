@@ -12,6 +12,14 @@ def home(request):
     return render(request=request, template_name="master_page.htm", context=context)
 
 @ajax
+def resetGame(request):
+    print("we are here 555")
+    game_engine.resetGameField()
+    context = {}
+    context['indexes'] = game_engine.game_field_array
+    return render(request=request, template_name="game_field_widget.htm", context=context)
+
+@ajax
 def handleUserAction(request):
     print("we are here...")
     print(request.POST)

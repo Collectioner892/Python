@@ -14,6 +14,7 @@
 </head>
 <body>
 <div class="container mt-4" id="game-frame">
+    <input type="button" value="reset" onclick="reset()"/>
     <div id="game-field" class="row d-flex justify-content-center">
         {% include "game_field_widget.htm" %}
     </div>
@@ -23,6 +24,19 @@
 
 {% block javascript %}
 <script>
+
+function reset(){
+    $.ajax({
+        type: 'POST',
+        url: '{% url "post/reset-game" %}',
+        success: function (response) {
+            $("#game-field").html(response.content);
+        },
+        error: function (response) {
+            console.log(response);
+        }
+    });
+}
 
 function s(cell_index){
     let serializedData = {"index": cell_index};
