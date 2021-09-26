@@ -45,4 +45,4 @@ class GameEngine():
             return False
         return True
 
-
+game_engine = GameEngine()

@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django_ajax.decorators import ajax
-from tictack_cmd.game_engine import GameEngine
-
-game_engine = GameEngine()
+from tictack_cmd.game_engine import game_engine
 
 # Create your views here.
 def home(request):
