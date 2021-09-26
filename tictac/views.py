@@ -15,6 +15,8 @@ def home(request):
 @ajax
 def handleUserAction(request):
     step_cell_index = int(request.POST['index'])
+    print("we are here...")
+    print(request.POST)
     context = {}
     game_engine.makePlayerStep(cell_index=step_cell_index)
     game_engine.makeComputerStep()
