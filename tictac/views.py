@@ -6,6 +6,7 @@ from tictack_cmd.game_engine import game_engine
 def home(request):
     # refresh to init
     game_engine.resetGameField()
+    print("we are here...2")
     context = {}
     context['indexes'] = game_engine.game_field_array
     return render(request=request, template_name="master_page.htm", context=context)
