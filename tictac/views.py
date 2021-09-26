@@ -13,14 +13,15 @@ def home(request):
 
 @ajax
 def handleUserAction(request):
-    step_cell_index = int(request.POST['index'])
     print("we are here...")
     print(request.POST)
-    context = {}
     print(game_engine.game_field_array)
+    step_cell_index = int(request.POST['index'])
     game_engine.makePlayerStep(cell_index=step_cell_index)
     print(game_engine.game_field_array)
     game_engine.makeComputerStep()
     print(game_engine.game_field_array)
+
+    context = {}
     context['indexes'] = game_engine.game_field_array
     return render(request=request, template_name="game_field_widget.htm", context=context)
