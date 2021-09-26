@@ -20,6 +20,6 @@ from tictac import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("tic-tac/", views.home),
-    path("post/cell-action", views.getCellResponse, name='post/cell-action')
+    path("post/cell-action", views.handleUserAction, name='post/cell-action')
 
 ]

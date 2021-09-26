@@ -25,3 +25,17 @@
     text-align: center;
     margin:3px;
 }
+
+
+.empty {
+    background: rgba(157, 160, 163, 0.1);
+    border-radius: 10px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+
+    width: 100px;
+    height: 100px;
+    font: 600 70px/100px 'Open Sans', arial, sans-serif;
+    text-align: center;
+    margin:3px;
+}

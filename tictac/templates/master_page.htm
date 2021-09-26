@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,45 +13,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'tictac/css/main.css' %}"/>
 </head>
 <body>
-
 <div class="container mt-4" id="game-frame">
-    {% csrf_token %}
-    <div class="row d-flex justify-content-center">
-        <div class="bg-light border col-4 shadow rounded mb-3">
-            <div class="row d-flex justify-content-center">
-                <div class="col-3 tack" onclick="s();" style="cursor:pointer">
-                    <span class="" value="0">O</span>
-                </div>
-                <div class="col-3 tick" style="cursor:pointer">
-                    <span>X</span>
-                </div>
-                <div class="col-3 tick" style="cursor:pointer">
-                    <span>X</span>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-3 tack">
-                    <span class="">O</span>
-                </div>
-                <div class="col-3 tick">
-                    <span>X</span>
-                </div>
-                <div class="col-3 tick">
-                    <span>X</span>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-3 tack">
-                    <span class="">O</span>
-                </div>
-                <div class="col-3 tick">
-                    <span>X</span>
-                </div>
-                <div class="col-3 tick">
-                    <span>X</span>
-                </div>
-            </div>
-        </div>
+    <div id="game-field" class="row d-flex justify-content-center">
+        {% include "game_field_widget.htm" %}
     </div>
 </div>
 </body>
@@ -61,14 +24,16 @@
 {% block javascript %}
 <script>
 
-function s(){
-    serializedData = {"expamle": "data"}
+function s(cell_index){
+    let serializedData = {"index": cell_index};
+
     $.ajax({
         type: 'POST',
         url: '{% url "post/cell-action" %}',
         data: serializedData,
         success: function (response) {
-            console.log(response)
+            console.log(response);
+            $("#game-field").html(response.content);
         },
         error: function (response) {
             console.log(response);

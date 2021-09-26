@@ -1,0 +1,21 @@
+<div class="bg-light border col-4 shadow rounded mb-3">
+    <div class="row d-flex justify-content-center">
+        {% for cell_value in indexes %}
+            {% if cell_value == '' %}
+                <div class="col-3 empty" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                    <span>{{ cell_value }}</span>
+                </div>
+            {% endif %}
+            {% if cell_value == "x" %}
+                <div class="col-3 tick" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                    <span>{{ cell_value }}</span>
+                </div>
+            {% endif %}
+            {% if cell_value == "o" %}
+                <div class="col-3 tack" onclick="s({{ forloop.counter0 }});" style="cursor:pointer">
+                    <span>{{ cell_value }}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
