@@ -18,8 +18,10 @@ def handleUserAction(request):
     print("we are here...")
     print(request.POST)
     context = {}
+    print(game_engine.game_field_array)
     game_engine.makePlayerStep(cell_index=step_cell_index)
+    print(game_engine.game_field_array)
     game_engine.makeComputerStep()
-
+    print(game_engine.game_field_array)
     context['indexes'] = game_engine.game_field_array
     return render(request=request, template_name="game_field_widget.htm", context=context)
