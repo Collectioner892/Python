@@ -32,7 +32,9 @@ function s(cell_index){
         url: '{% url "post/cell-action" %}',
         data: serializedData,
         success: function (response) {
-            console.log(response);
+            console.log(response.content);
+            {#console.log(response);#}
+            {#console.log(JSON.parse(response.content));#}
             $("#game-field").html(response.content);
         },
         error: function (response) {
