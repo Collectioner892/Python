@@ -6,31 +6,36 @@ from tictack_cmd.game_engine import game_engine
 def home(request):
     # refresh to init
     game_engine.resetGameField()
-    print("we are here...2")
-    context = {}
-    context['indexes'] = game_engine.game_field_array
+    context = {
+        'game_field_cell_indexes': game_engine.game_field_array,
+        'is_winner_defined': (False, "")}
     return render(request=request, template_name="master_page.htm", context=context)
 
 @ajax
 def resetGame(request):
-    print("we are here 555")
     game_engine.resetGameField()
-    context = {}
-    context['indexes'] = game_engine.game_field_array
+
+    context = {
+        'game_field_cell_indexes': game_engine.game_field_array,
+        'is_winner_defined': (False, "")}
     return render(request=request, template_name="game_field_widget.htm", context=context)
 
 @ajax
 def handleUserAction(request):
-    print("we are here...")
-    print(request.POST)
-    print(game_engine.game_field_array)
     step_cell_index = int(request.POST['index'])
-    game_engine.makePlayerStep(cell_index=step_cell_index)
-    print(game_engine.game_field_array)
-    game_engine.makeComputerStep()
-    context = {'indexes': game_engine.game_field_array}
 
-    print(game_engine.game_field_array)
-    r = render(request=request, template_name="game_field_widget.htm", context=context)
-    print(game_engine.game_field_array)
-    return r
+    game_engine.makePlayerStep(cell_index=step_cell_index)
+    is_winner_defined = game_engine.is_defined_winner()
+
+    if is_winner_defined[0]:
+        context = {
+            'game_field_cell_indexes': game_engine.game_field_array,
+            'is_winner_defined': is_winner_defined}
+        return render(request=request, template_name="game_field_widget.htm", context=context)
+
+    game_engine.makeComputerStep()
+    is_winner_defined = game_engine.is_defined_winner()
+    context = {
+        'game_field_cell_indexes': game_engine.game_field_array,
+        'is_winner_defined': is_winner_defined}
+    return render(request=request, template_name="game_field_widget.htm", context=context)
