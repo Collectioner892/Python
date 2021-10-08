@@ -13,47 +13,56 @@
     <link rel="stylesheet" type="text/css" href="{% static 'tictac/css/main.css' %}"/>
 </head>
 <body>
-<div class="container mt-4" id="game-frame">
-    <input type="button" value="reset" onclick="reset()"/>
-    <div id="game-field" class="row d-flex justify-content-center">
-        {% include "game_field_widget.htm" %}
+<div class="container mt-4" id="game-frame" style="height: 95vh">
+    <div class="row mb-4">
+        <div class="col-3 border shadow rounded" style="height: 90vh">
+            <input class="w-100 btn btn-outline-success mt-4" type="button" value="reset game" onclick="reset()" />
+        </div>
+        <div class="col-4">
+            <div id="game-field">
+                {% include "game_field_widget.htm" %}
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="alert alert-primary"></div>
+        </div>
     </div>
 </div>
 </body>
 
 
 {% block javascript %}
-<script>
+    <script>
 
-function reset(){
-    $.ajax({
-        type: 'POST',
-        url: '{% url "post/reset-game" %}',
-        success: function (response) {
-            $("#game-field").html(response.content);
-        },
-        error: function (response) {
-            console.log(response);
+        function reset() {
+            $.ajax({
+                type: 'POST',
+                url: '{% url "post/reset-game" %}',
+                success: function (response) {
+                    $("#game-field").html(response.content);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
         }
-    });
-}
 
-function s(cell_index){
-    let serializedData = {"index": cell_index};
-    $.ajax({
-        type: 'POST',
-        url: '{% url "post/cell-action" %}',
-        data: serializedData,
-        success: function (response) {
-            console.log(response.content);
-            $("#game-field").html(response.content);
-        },
-        error: function (response) {
-            console.log(response);
+        function s(cell_index) {
+            let serializedData = {"index": cell_index};
+            $.ajax({
+                type: 'POST',
+                url: '{% url "post/cell-action" %}',
+                data: serializedData,
+                success: function (response) {
+                    console.log(response.content);
+                    $("#game-field").html(response.content);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
         }
-    });
-}
-</script>
+    </script>
 {% endblock javascript %}
 
 </html>
