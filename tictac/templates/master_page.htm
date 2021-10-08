@@ -15,15 +15,44 @@
 <body>
 <div class="container mt-4" id="game-frame" style="height: 95vh">
     <div class="row mb-4">
-        <div class="col-3 border shadow rounded" style="height: 90vh">
-            <input class="w-100 btn btn-outline-success mt-4" type="button" value="reset game" onclick="reset()" />
+        <div class="col-4 border shadow rounded" style="height: 90vh">
+            <div class="row mt-4 m-3">
+                <input class="w-100 btn btn-outline-success" type="button" value="Reset the game" onclick="reset()"/>
+            </div>
+            <hr/>
+            <div class="row m-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your name..."/>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Enter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table m-3">
+                    <caption>Game Score</caption>
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-center"> X </th>
+                        <th scope="col" class="text-center"> O </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">3</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
         <div class="col-4">
             <div id="game-field">
                 {% include "game_field_widget.htm" %}
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-4">
             <div class="alert alert-primary"></div>
         </div>
     </div>
