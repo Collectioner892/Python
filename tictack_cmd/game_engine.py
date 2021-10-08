@@ -31,7 +31,7 @@ class GameEngine():
         if self.game_field_array[cell_index] == self.EMPTY_CELL:
             self.game_field_array[cell_index] = self.X_CELL
 
-    def is_defined_winner(self):
+    def isWinnerDefined(self):
         if self.game_field_array[0] == self.X_CELL and self.game_field_array[1] == self.X_CELL and self.game_field_array[2] == self.X_CELL:
             return (True, self.X_CELL)
         if self.game_field_array[3] == self.X_CELL and self.game_field_array[4] == self.X_CELL and self.game_field_array[5] == self.X_CELL:
@@ -65,5 +65,8 @@ class GameEngine():
         if self.game_field_array[2] == self.O_CELL and self.game_field_array[4] == self.O_CELL and self.game_field_array[6] == self.O_CELL:
             return (True, self.O_CELL)
         return (False, "")
+
+    def checkCorrectInput(self, cell_index):
+        return self.game_field_array[cell_index] == self.EMPTY_CELL
 
 game_engine = GameEngine()

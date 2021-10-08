@@ -24,8 +24,14 @@ def resetGame(request):
 def handleUserAction(request):
     step_cell_index = int(request.POST['index'])
 
+    if not game_engine.checkCorrectInput(cell_index=step_cell_index):
+        context = {
+            'game_field_cell_indexes': game_engine.game_field_array,
+            'is_winner_defined': (False, "")}
+        return render(request=request, template_name="game_field_widget.htm", context=context)
+
     game_engine.makePlayerStep(cell_index=step_cell_index)
-    is_winner_defined = game_engine.is_defined_winner()
+    is_winner_defined = game_engine.isWinnerDefined()
 
     if is_winner_defined[0]:
         context = {
@@ -34,7 +40,7 @@ def handleUserAction(request):
         return render(request=request, template_name="game_field_widget.htm", context=context)
 
     game_engine.makeComputerStep()
-    is_winner_defined = game_engine.is_defined_winner()
+    is_winner_defined = game_engine.isWinnerDefined()
     context = {
         'game_field_cell_indexes': game_engine.game_field_array,
         'is_winner_defined': is_winner_defined}
